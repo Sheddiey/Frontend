@@ -1,13 +1,13 @@
 // apiConfig.js
 
-const BASE_URL = 'http://198.211.98.157/'; // Replace with your actual API base URL
+const BASE_URL = 'http://198.211.98.157'; // Replace with your actual API base URL
 // const BASE_URL = 'https://calm-deadly-kit.ngrok-free.app';
 // const BASE_URL = ' https://calm-deadly-kit.ngrok-free.app';
 export const USER_LIST_URL = `${BASE_URL}/api/users/`;
 
 export const CREATE_ADMIN = `${BASE_URL}/api/auth/registration/`;
 export const CREATE_VENDOR = `${BASE_URL}/api/auth/registration/`;
-export const CREATE_CUSTOMER = `${BASE_URL}/api/auth/registration/`;
+export const CREATE_CUSTOMER = `${BASE_URL}/api/registration/`;
 
 export const GET_ADMIN = `${BASE_URL}/api/admins/pk/`;
 export const GET_VENDOR = `${BASE_URL}/api/vendors/pk/`;

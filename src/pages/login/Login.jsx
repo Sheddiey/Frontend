@@ -1,26 +1,28 @@
-import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../landing/assets/brand/logo.svg";
 import { message } from "antd";
-import { login,getUserProfile } from "../../Api/api";
+import { login, getUserProfile } from "../../Api/api";
+
 const Login = () => {
   const [accountID, setAccountId] = useState("");
+  const [email, setEmail] = useState("");
   const [passcode, setPasscode] = useState("");
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try{
-      const response = await login({username:accountID,password:passcode})
+    try {
+      const response = await login({ username: accountID, email, password: passcode });
       if (response.non_field_errors) {
         message.error(response.non_field_errors);
         return;
       }
       const user = await getUserProfile();
-      if(!user.id){
-        message.error("please try again later");
+      if (!user.id) {
+        message.error("Please try again later");
         return;
       }
       // Storing the user object in sessionStorage
@@ -35,17 +37,16 @@ const Login = () => {
       } else {
         message.error("Server error, please contact support");
       }
-    }
-    catch(error){
-      if(error.response.data.non_field_errors){
-        message.error(error.response.data.non_field_errors)
-      }
-      else{
+    } catch (error) {
+      console.error("Login error: ", error);
+      if (error.response && error.response.data && error.response.data.non_field_errors) {
+        message.error(error.response.data.non_field_errors);
+      } else {
         message.error("Server error, please contact support");
       }
     }
   };
-
+  
   return (
     <div className="flex justify-center items-center h-screen bg-img">
       <div className="shadow-lg p-6 bg-white bg-opacity-70 rounded-xl">
@@ -56,9 +57,19 @@ const Login = () => {
             <FontAwesomeIcon className="absolute left-3 top-3 text-blue-600" icon={faUser} />
             <input
               className="w-full pl-10 pr-4 py-2 border rounded focus:border-blue-600"
-              placeholder="User Name or Email Address"
+              placeholder="User Name"
               value={accountID}
               onChange={(e) => setAccountId(e.target.value)}
+            />
+          </div>
+          <div className="relative">
+            <FontAwesomeIcon className="absolute left-3 top-3 text-blue-600" icon={faEnvelope} />
+            <input
+              className="w-full pl-10 pr-4 py-2 border rounded focus:border-blue-600"
+              placeholder="Email Address"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="relative">
