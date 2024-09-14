@@ -5,7 +5,7 @@ import Admin from "./pages/admin/components/Admin";
 import LandingPage from "./pages/landing/components/LandingPage";
 import Vendors from "./pages/Vendors/Vendors";
 import Login from "./pages/login/Login";
-import Signin from "./pages/signin/Signin";
+import Signin from "./pages/signin/Signup";
 import Printing from "./pages/printing/Printing";
 import ShippingService from "./pages/shipping/Shipping";
 import MarketPlace from "./pages/marketPlace/MarketPlace";
