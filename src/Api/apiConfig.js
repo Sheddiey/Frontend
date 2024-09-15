@@ -1,6 +1,6 @@
 // apiConfig.js
 
-const BASE_URL = 'http://198.211.98.157'; // Replace with your actual API base URL
+const BASE_URL = 'http://192.241.153.105'; // Replace with your actual API base URL
 // const BASE_URL = 'https://calm-deadly-kit.ngrok-free.app';
 // const BASE_URL = ' https://calm-deadly-kit.ngrok-free.app';
 export const USER_LIST_URL = `${BASE_URL}/api/users/`;
